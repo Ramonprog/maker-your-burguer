@@ -18,9 +18,11 @@ export default {
 </script>
 
 <template>
-  <NavBar :logo="logo" alt="Logotipo" />
-  <router-view />
-  <FooterComponent />
+  <div class="app">
+    <NavBar :logo="logo" alt="Logotipo" />
+    <router-view />
+    <FooterComponent />
+  </div>
 </template>
 
 <style>
@@ -29,6 +31,12 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .main-container {

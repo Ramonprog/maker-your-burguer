@@ -1,3 +1,10 @@
+<script >
+export default {
+  name: 'NavBar',
+  props: ['logo', 'alt']
+}
+</script>
+
 <template>
   <nav>
     <div class="logo">
@@ -13,12 +20,7 @@
   </nav>
 </template>
 
-<script >
-export default {
-  name: 'NavBar',
-  props: ['logo', 'alt']
-}
-</script>
+
 
 <style scoped>
 nav {
