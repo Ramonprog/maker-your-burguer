@@ -1,10 +1,12 @@
 <script>
 import BannerVue from "../components/Banner.vue";
+import BurgerFormVue from '../components/BurgerForm.vue';
 
 export default {
   name: 'Home',
   components: {
-    BannerVue
+    BannerVue,
+    BurgerFormVue
   }
 }
 </script>
@@ -13,8 +15,6 @@ export default {
   <BannerVue />
   <main class="main-container">
     <h1>Monte o seu Burger:</h1>
-    <form>
-
-    </form>
+    <BurgerFormVue />
   </main>
 </template>

@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div class="main-banner">
-    <h1>Make Your Burguer</h1>
+    <h1>Make Your Burger</h1>
   </div>
 </template>
 
