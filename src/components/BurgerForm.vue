@@ -11,7 +11,6 @@ export default {
       bread: null,
       meat: null,
       optional: [],
-      status: 'Solicitado',
       msg: null
     }
   },
@@ -23,6 +22,42 @@ export default {
       this.breadData = data.paes
       this.meatData = data.carnes
       this.optionalData = data.opcionais
+    },
+    async createBurger(event) {
+      event.preventDefault()
+
+      if (!this.optional) {
+        this.optional = {}
+      }
+
+      const data = {
+        name: this.name,
+        meat: this.meat,
+        bread: this.bread,
+        optional: Object.keys(this.optional),
+        status: 'Solicitado'
+      }
+
+      if (this.name === null || this.meat === null || this.bread === null) return
+
+      const dataJson = JSON.stringify(data)
+
+      try {
+        const req = await fetch('http://localhost:3000/burgers', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: dataJson
+        })
+
+        this.name = null
+        this.meat = null
+        this.bread = null
+        this.optional = []
+      } catch (error) {
+        console.log(error.message)
+      }
+
+
     }
   },
   mounted() {
@@ -36,7 +71,7 @@ export default {
     <p>componente de mensagem</p>
 
     <div class="form">
-      <form>
+      <form @submit="createBurger">
         <div class="input-container">
           <label for="name">Nome do cliente: </label>
           <input type="text" id="name" placeholder="Digite seu nome" v-model="name" />
@@ -65,7 +100,8 @@ export default {
 
           <div class="checkbox">
             <div class="checkbox-cointainer" v-for="optionalItem in optionalData" :key="optionalItem.id">
-              <input type="checkbox" name="optional" id="optional" v-model="optional" />
+              <input type="checkbox" :name="'optional-' + optionalItem.tipo" id="optional"
+                v-model="optional[optionalItem.tipo]" />
               <span>{{ optionalItem.tipo }}</span>
             </div>
           </div>
@@ -125,7 +161,6 @@ select {
 .checkbox-cointainer {
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .checkbox-cointainer input {

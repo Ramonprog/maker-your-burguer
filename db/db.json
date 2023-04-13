@@ -77,5 +77,21 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": []
+  "burgers": [
+    {
+      "name": "alisson",
+      "meat": {
+        "id": 2,
+        "tipo": "Alcatra"
+      },
+      "bread": "Italiano Branco",
+      "optional": [
+        "Bacon",
+        "Cebola roxa",
+        "Cheddar"
+      ],
+      "status": "Solicitado",
+      "id": 1
+    }
+  ]
 }
