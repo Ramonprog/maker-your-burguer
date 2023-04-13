@@ -2,6 +2,7 @@
 import NavBar from './components/NavBar.vue';
 import FooterComponent from './components/FooterComponent.vue';
 import Logo from '/img/logo.png'
+import { toast } from 'vue3-toastify';
 
 export default {
   name: 'App',

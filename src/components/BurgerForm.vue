@@ -1,4 +1,5 @@
 <script>
+import { toast } from 'vue3-toastify'
 export default {
   name: 'BurguerForm',
 
@@ -38,7 +39,10 @@ export default {
         status: 'Solicitado'
       }
 
-      if (this.name === null || this.meat === null || this.bread === null) return
+      if (this.name === null || this.meat === null || this.bread === null) {
+        return toast.error('Preencha todos os dados do pedido')
+      }
+
 
       const dataJson = JSON.stringify(data)
 
@@ -53,8 +57,11 @@ export default {
         this.meat = null
         this.bread = null
         this.optional = []
+
+        toast.success('Pedido cadastrado com sucesso')
       } catch (error) {
         console.log(error.message)
+        toast.error('Algo deu errado!')
       }
 
 
@@ -68,8 +75,6 @@ export default {
 
 <template>
   <div>
-    <p>componente de mensagem</p>
-
     <div class="form">
       <form @submit="createBurger">
         <div class="input-container">
