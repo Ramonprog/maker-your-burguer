@@ -58,7 +58,9 @@ export default {
         this.bread = null
         this.optional = []
 
-        toast.success('Pedido cadastrado com sucesso')
+        const res = await req.json()
+
+        toast.success(`Pedido nº ${res.id} realizado com sucesso!`)
       } catch (error) {
         console.log(error.message)
         toast.error('Algo deu errado!')
