@@ -3,7 +3,14 @@ import DashboardVue from '../components/Dashboard.vue';
 export default {
   name: 'OrdersView',
   components: {
-    DashboardVue
+    DashboardVue,
+    data() {
+      return {
+        burgers: null,
+        burgers_id: null,
+        status: []
+      }
+    }
   }
 }
 </script>

@@ -4,6 +4,8 @@ import FooterComponent from './components/FooterComponent.vue';
 import Logo from '/img/logo.png'
 import { toast } from 'vue3-toastify';
 
+//parei na aula 29
+
 export default {
   name: 'App',
   components: {
