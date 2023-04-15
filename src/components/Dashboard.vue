@@ -1,4 +1,6 @@
 <script>
+import { toast } from 'vue3-toastify'
+
 export default {
   name: 'Dashboard',
 
@@ -18,6 +20,57 @@ export default {
 
         this.burgers = data
 
+        this.getStatus()
+
+      } catch (error) {
+        console.log(error.message)
+      }
+
+    },
+
+    async getStatus() {
+
+      try {
+        const req = await fetch('http://localhost:3000/status')
+        const data = await req.json()
+
+        this.status = data
+        console.log(this.status)
+      } catch (error) {
+        console.log(error.message)
+      }
+
+    },
+
+    async deletBurger(id) {
+      try {
+        const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+          method: 'DELETE',
+
+        })
+
+        const res = await req.json()
+        this.getBurgers()
+        toast.success('Pedido deletado com sucesso!')
+      } catch (error) {
+        console.log(error.message)
+      }
+    },
+
+    async updateBurg(event, id) {
+      const option = event.target.value
+      const dataJson = JSON.stringify({ status: option })
+
+      try {
+        const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+          method: 'PATCH',
+          body: dataJson,
+          headers: {
+
+            "Content-Type": "application/json"
+          }
+        })
+        toast.success('Status alterado com sucesso!')
       } catch (error) {
         console.log(error.message)
       }
@@ -64,10 +117,13 @@ export default {
           </div>
           <div>
             <div class="select-container">
-              <select name="status" class="status">
+              <select name="status" class="status" @change="updateBurg($event, burger.id)">
                 <option value="">Selecione</option>
+                <option :value="statusItem.tipo" v-for="statusItem in status" :key="statusItem.id"
+                  :selected="burger.status === statusItem.tipo">{{ statusItem.tipo }}
+                </option>
               </select>
-              <button class="delete-btn">Cancelar</button>
+              <button class="delete-btn" @click='deletBurger(burger.id)'>Cancelar</button>
             </div>
 
           </div>

@@ -112,7 +112,7 @@
       },
       "bread": "Italiano Branco",
       "optional": [],
-      "status": "Solicitado",
+      "status": "Em produção",
       "id": 3
     },
     {
@@ -136,21 +136,6 @@
       "optional": [],
       "status": "Solicitado",
       "id": 5
-    },
-    {
-      "name": "teste",
-      "meat": {
-        "id": 3,
-        "tipo": "Picanha"
-      },
-      "bread": "3 Queijos",
-      "optional": [
-        "Bacon",
-        "Tomate",
-        "Cebola roxa"
-      ],
-      "status": "Solicitado",
-      "id": 6
     }
   ]
 }
