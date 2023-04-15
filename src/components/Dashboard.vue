@@ -1,6 +1,33 @@
 <script>
 export default {
-  name: 'Dashboard'
+  name: 'Dashboard',
+
+  data() {
+    return {
+      burgers: null,
+      burger_id: null,
+      status: [],
+    }
+  },
+  methods: {
+    async getBurgers() {
+
+      try {
+        const req = await fetch('http://localhost:3000/burgers')
+        const data = await req.json()
+
+        this.burgers = data
+
+      } catch (error) {
+        console.log(error.message)
+      }
+
+    }
+  },
+
+  mounted() {
+    this.getBurgers()
+  }
 }
 </script>
 
@@ -12,32 +39,30 @@ export default {
       </div>
 
       <div class="burger-table-rows">
-        <div class="burger-table-row">
+        <div class="burger-table-row" v-for="burger in burgers" :key="burger.id">
           <div class="order-number">
             <h4>Id</h4>
-            1
+            <p>{{ burger.id }}</p>
           </div>
           <div>
             <h4>Nome</h4>
-            <p>Ramon</p>
+            <p>{{ burger.name }}</p>
           </div>
           <div>
             <h4>Pão</h4>
-            <p>4 queijos</p>
+            <p>{{ burger.bread }}</p>
           </div>
           <div>
             <h4>carnes</h4>
-            <p>Picanha</p>
+            <p>{{ burger.meat.tipo }}</p>
           </div>
           <div>
             <h4>opcionais</h4>
-            <ul>
-              <li>salame</li>
-              <li>tomate</li>
+            <ul v-for="(opt, index) in burger.optional" :key="index">
+              <li>{{ opt }}</li>
             </ul>
           </div>
           <div>
-            <h4>carnes</h4>
             <div class="select-container">
               <select name="status" class="status">
                 <option value="">Selecione</option>

@@ -14,7 +14,7 @@ export default {
     </div>
     <div class="links">
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/pedidos">About</RouterLink>
+      <RouterLink to="/pedidos">Pedidos</RouterLink>
     </div>
 
   </nav>

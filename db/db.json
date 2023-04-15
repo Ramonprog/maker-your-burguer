@@ -138,50 +138,19 @@
       "id": 5
     },
     {
-      "name": null,
-      "meat": null,
-      "bread": null,
-      "optional": [],
-      "status": "Solicitado",
-      "id": 6
-    },
-    {
-      "name": null,
-      "meat": null,
-      "bread": null,
-      "optional": [],
-      "status": "Solicitado",
-      "id": 7
-    },
-    {
-      "name": null,
-      "meat": null,
-      "bread": null,
-      "optional": [],
-      "status": "Solicitado",
-      "id": 8
-    },
-    {
-      "name": "alisson",
+      "name": "teste",
       "meat": {
         "id": 3,
         "tipo": "Picanha"
       },
       "bread": "3 Queijos",
-      "optional": [],
+      "optional": [
+        "Bacon",
+        "Tomate",
+        "Cebola roxa"
+      ],
       "status": "Solicitado",
-      "id": 9
-    },
-    {
-      "name": "pablo escobar",
-      "meat": {
-        "id": 1,
-        "tipo": "Maminha"
-      },
-      "bread": "Italiano Branco",
-      "optional": [],
-      "status": "Solicitado",
-      "id": 10
+      "id": 6
     }
   ]
 }
